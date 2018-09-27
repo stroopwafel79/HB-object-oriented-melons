@@ -70,3 +70,20 @@ class InternationalMelonOrder(AbstractMelonOrder):
 
         super().mark_shipped()
 
+
+class GovernmentMelonOrder(AbstractMelonOrder):
+    """ A melon order for the US Government."""
+
+    def __init__(self, species, qty):
+        """Initialize melon order attributes."""
+        super().__init__(species, qty, "Government")
+        self.tax = 0.00
+        self.passed_inspection = False
+
+    def get_total(self):
+
+        return super().get_total() 
+
+    def mark_inspection(self, passed=True):
+
+        self.passed_inspection = True
